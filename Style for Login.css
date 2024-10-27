@@ -1,0 +1,36 @@
+body {
+    background-color: #e9ecef; /* Soft grey background for a calm atmosphere */
+}
+
+.login-container {
+    background-color: #ffffff; /* Clean white background for the form */
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
+    padding: 20px;
+    max-width: 400px; /* Set a max width for the container */
+    margin: auto; /* Center the container horizontally */
+}
+
+h2 {
+    color: #007bff; /* Primary color for headings */
+    font-family: 'Arial', sans-serif; /* Simple font for readability */
+}
+
+.mb-3 {
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+}
+
+.form-label {
+    margin-bottom: 5px; /* Space between label and input */
+}
+
+.btn-primary {
+    background-color: #0056b3; /* Darker blue for a professional look */
+    border: none; /* Remove default border */
+    width: 100%; /* Full-width button */
+}
+
+.btn-primary:hover {
+    background-color: #004085; /* Darker shade on hover for feedback */
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Staff Login</title>
+    <link rel="icon" href="Image/Xaviers.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="Style for Login.css">
+</head>
+<body>
+    <center><img src="Image/XIE Logo.png" alt="Xaviers"></center>
+    <br>
+    <div class="container">
+        <div class="login-container">
+            <h2 class="text-center mb-4">Staff Login</h2>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <div class="text-center mt-3">
+                    <a href="#" class="text-decoration-none">Forgot password?</a>
+                </div>
+            </form>
+            <div id="message" class="text-center mt-3"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script login.js"></script>
+</body>
+</html>

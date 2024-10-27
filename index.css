@@ -1,0 +1,145 @@
+/* Banner Section */
+.banner {
+    background-image: url('Image/Xavier\ Campus\ .png'); /* Add your banner image URL */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay with transparency */
+    backdrop-filter: blur(10px); /* Blurred overlay */
+    z-index: -1;
+}
+
+/* Animated Text */
+.animated-title, .animated-subtitle {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.animated-title {
+    animation-delay: 0.5s;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.animated-title::before {
+    content: '\f015'; /* Font Awesome home icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 2.5rem;
+    animation: bounceIcon 1.5s ease infinite;
+}
+
+.animated-subtitle {
+    animation-delay: 1s;
+    font-size: 1.5rem;
+}
+
+/* Icons Animation */
+@keyframes bounceIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Titles */
+.section-title {
+    margin-bottom: 2rem;
+    font-weight: bold;
+    color: #007bff; /* Primary color */
+    text-transform: uppercase;
+    font-size: 2rem;
+    position: relative;
+    animation: fadeInLeft 0.7s ease forwards;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Testimonials */
+.testimonial {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.testimonial:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+footer {
+    background: #343a40; /* Dark background */
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+footer a {
+    color: #007bff;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #0056b3;
+    animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}

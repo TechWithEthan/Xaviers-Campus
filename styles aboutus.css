@@ -1,0 +1,70 @@
+/* General Styles */
+body {
+    background-color: #F7F7F7; /* Light Gray */
+    color: #2E4053; /* Dark Blue */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2E4053; /* Dark Blue */
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #FFFFFF; /* White for contrast */
+}
+
+.navbar .nav-link:hover {
+    color: #FFC107; /* Amber on hover */
+}
+
+/* Hero Section */
+.hero {
+    background-color: #2E4053; /* Dark Blue */
+    color: #FFFFFF; /* White text */
+    padding: 50px 0; /* Add some padding */
+}
+
+.hero button {
+    background-color: #FFC107; /* Amber */
+    color: #2E4053; /* Dark Blue text */
+}
+
+/* About Section */
+.about {
+    padding: 50px 0;
+    background-color: #FFFFFF; /* White background */
+    color: #2E4053; /* Dark Blue text */
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 50px 0;
+    background-color: #F7F7F7; /* Light Gray */
+}
+
+/* Footer */
+footer {
+    background-color: #2E4053; /* Dark Blue */
+    color: #FFFFFF; /* White text */
+}
+
+footer a {
+    color: #FFC107; /* Amber links */
+}
+
+footer a:hover {
+    color: #4CAF50; /* Green on hover */
+}
+
+/* Form Styles */
+input[type="email"] {
+    border: 1px solid #2E4053; /* Dark Blue border */
+    padding: 10px;
+    width: 100%;
+}
+
+button.btn-primary {
+    background-color: #4CAF50; /* Green */
+    color: #FFFFFF; /* White text */
+}
