@@ -1,61 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Fade in gallery title
-    const title = document.getElementById('gallery-title');
-    title.style.transition = 'opacity 1.5s ease-in-out';
-    title.style.opacity = 1;
+document.querySelectorAll('.gallery-item img').forEach((img, index) => {
+  img.addEventListener('click', function() {
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = this.src; // Set the modal image source to the clicked image
 
-    // Array of media for the gallery
-const mediaItems = [
-    { src: 'Image/XavierCampus.png', alt: 'Campus View 1', type: 'image' },
-    { src: 'Image/classroom2.png', alt: 'Campus View 2', type: 'image' },
-    { src: 'Image/xavierscampus3.jpg', alt: 'Campus View 3', type: 'image' },
-    { src: 'Image/xavierscampus4.jpg', alt: 'Campus View 4', type: 'image' },
-    { src: 'Image/xavierscampus5.png', alt: 'Campus View 5', type: 'image' },
-    { src: 'Image/xavierscampus6.png', alt: 'Campus View 6', type: 'image' },
-    { src: 'Image/xavierscampus7.png', alt: 'Campus View 7', type: 'image' },
-    { 
-        src: "Image/Christmas party.mp4", 
-        alt: "Campus Christmas Party and Carols", 
-        type: "video" 
-    }
-    
-  ];
-  
-  // Example rendering logic for images and videos
-  mediaItems.forEach((item) => {
-    if (item.type === 'image') {
-      // Code to render image
-    } else if (item.type === 'video') {
-      // Code to render video
-    }
-  });
-  
+    const modalCaption = document.getElementById('modalCaption');
+    modalCaption.innerText = this.alt || 'Image'; // Set caption from alt attribute or default to 'Image'
 
-    // Generate gallery items dynamically
-    const galleryRow = document.getElementById('gallery-row');
-    images.forEach(img => {
-      const galleryItem = document.createElement('div');
-      galleryItem.classList.add('gallery-item');
-      
-      const imageElement = document.createElement('img');
-      imageElement.src = img.src;
-      imageElement.alt = img.alt;
+    const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+    modal.show(); // Show the modal
 
-      galleryItem.appendChild(imageElement);
-      galleryRow.appendChild(galleryItem);
+    // Handle next/previous image navigation
+    document.getElementById('nextBtn').onclick = function() {
+      const nextIndex = (index + 1) % document.querySelectorAll('.gallery-item img').length;
+      const nextImage = document.querySelectorAll('.gallery-item img')[nextIndex];
+      modalImage.src = nextImage.src;
+      modalCaption.innerText = nextImage.alt || 'Image';
+      index = nextIndex; // Update index to the next image
+    };
 
-      // Add hover effects
-      galleryItem.addEventListener('mouseenter', () => {
-        galleryItem.style.transition = 'transform 0.5s ease';
-        galleryItem.style.transform = 'scale(1.05) rotate(2deg)';
-        galleryItem.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
-        imageElement.style.transform = 'scale(1.1)';
-      });
+    document.getElementById('prevBtn').onclick = function() {
+      const prevIndex = (index - 1 + document.querySelectorAll('.gallery-item img').length) % document.querySelectorAll('.gallery-item img').length;
+      const prevImage = document.querySelectorAll('.gallery-item img')[prevIndex];
+      modalImage.src = prevImage.src;
+      modalCaption.innerText = prevImage.alt || 'Image';
+      index = prevIndex; // Update index to the previous image
+    };
 
-      galleryItem.addEventListener('mouseleave', () => {
-        galleryItem.style.transform = 'scale(1) rotate(0deg)';
-        galleryItem.style.boxShadow = 'none';
-        imageElement.style.transform = 'scale(1)';
-      });
+    // Close modal when clicking outside of the image
+    const modalElement = document.getElementById('imageModal');
+    modalElement.addEventListener('click', function(event) {
+      if (event.target === modalElement) {
+        modal.hide(); // Hide the modal if the backdrop is clicked
+      }
     });
   });
+});
