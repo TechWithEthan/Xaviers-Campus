@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="Image/Xaviers.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navbar -->
@@ -27,9 +28,20 @@
                 <li class="nav-item"><a class="nav-link" href="campus-life.html">Campus Life</a></li>
                 <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="mailto:xavierscampus@gmail.com">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="https://techwithethan.github.io/SamahSkillingStudent/video%20player.html">Event</a></li>
-                <li class="nav-item"><a class="nav-link" href="Notice Board.html">Notice Board</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                
+                <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More Menu
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="nav-item"><a class="dropdown-item" href="https://techwithethan.github.io/SamahSkillingStudent/video%20player.html">Event</a></li>
+                            <li class="nav-item"><a class="dropdown-item" href="Notice Board.html">Notice Board</a></li>
+                            <li class="nav-item"><a class="dropdown-item" href="login.html">Login</a></li>
+                        </ul>
+                    </li>
+                    
+                </li>
             </ul>
         </div>
     </div>
@@ -51,7 +63,7 @@
 <!-- Announcements Section -->
 <section class="announcements text-center py-5 animate__animated animate__fadeIn">
     <div class="container">
-        <h2 class=" section-title">Upcoming Events & Announcements</h2>
+        <h2 class="section-title">Upcoming Events & Announcements</h2>
         <p class="lead">Stay updated with the latest campus events, workshops, seminars, and cultural activities. Join us for the upcoming Annual College Festival and make the most of your student life experience.</p>
     </div>
 </section>
@@ -100,6 +112,7 @@
     </div>
 </footer>
 
+<!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script_index.js"></script>
 </body>
