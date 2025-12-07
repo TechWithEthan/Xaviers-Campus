@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notice Board - St. Xavier's Campus</title>
 
 <!-- PDF.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
 
-<!-- AOS -->
+<!-- AOS Library -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
@@ -19,8 +18,9 @@ body {
     font-family:'Poppins', Arial, sans-serif; 
     background: linear-gradient(120deg, #fdfbfb, #ebedee);
 }
+h1,h2,p{margin:0;}
 
-/* HEADER */
+/* === HEADER === */
 header {
     width:100%; 
     padding:25px 20px; 
@@ -30,216 +30,156 @@ header {
     align-items:center; 
     gap:20px; 
     border-radius:0 0 20px 20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-header img {height:65px;}
-header h1 {font-size:1.7rem; font-weight:600;}
+header img {height:70px; border-radius:10px;}
+header h1 {font-size:1.8rem; font-weight:600; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);}
 
-/* CONTAINER */
+/* === CONTAINER === */
 .container {
-    width:95%; 
+    width:90%; 
     max-width:1200px; 
-    margin:20px auto;
+    margin:30px auto; 
 }
 
-/* CONTROLS */
+/* === CONTROLS === */
 .controls {
     display:flex; 
     flex-wrap:wrap; 
-    gap:10px; 
-    padding:12px; 
+    gap:12px; 
+    padding:15px; 
     background:linear-gradient(135deg,#ff9a9e,#fad0c4); 
     border-radius:15px; 
-    box-shadow:0 4px 12px rgba(0,0,0,0.15);
-    justify-content:center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    justify-content: center;
 }
-
 .controls button {
-    padding:8px 15px; 
+    padding:8px 16px; 
     border:none; 
     border-radius:8px; 
     cursor:pointer; 
+    font-weight:500;
     color:white;
-    font-size:15px;
+    transition: all 0.3s ease, transform 0.2s ease;
 }
+.controls button:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Rainbow Buttons */
+#prevBtn { background: linear-gradient(45deg,#ff4e50,#f9d423); }
+#nextBtn { background: linear-gradient(45deg,#36d1dc,#5b86e5); }
+#zoomIn { background: linear-gradient(45deg,#ff6a00,#ee0979); }
+#zoomOut { background: linear-gradient(45deg,#43cea2,#185a9d); }
+
+/* Input */
 .controls input {
-    width:55px;
-    padding:5px;
+    padding:5px 10px;
     border-radius:6px;
     border:1px solid #ccc;
     text-align:center;
 }
 
-/* Button Colors */
-#prevBtn { background: linear-gradient(45deg,#ff4e50,#f9d423); }
-#nextBtn { background: linear-gradient(45deg,#36d1dc,#5b86e5); }
-#zoomIn  { background: linear-gradient(45deg,#ff6a00,#ee0979); }
-#zoomOut { background: linear-gradient(45deg,#43cea2,#185a9d); }
-
-/* VIEWER */
+/* === PDF VIEWER === */
 .viewer {
-    background:white;
-    padding:10px; 
+    background: linear-gradient(180deg,#ffffff,#f0f8ff); 
+    padding:25px; 
     border-radius:15px; 
-    min-height:70vh; 
+    min-height:80vh; 
     box-shadow:0 6px 20px rgba(0,0,0,0.2);
-    margin-top:15px;
-    overflow-x:auto;
+    margin-top:20px;
+    overflow-x: auto;
 }
-
 .page-canvas {
-    width:100%;
-    max-width:100%;
-    height:auto;
-    margin:auto;
+    width:100%; 
+    margin-bottom:20px; 
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
-/* MOBILE RESPONSIVE */
-@media (max-width:600px) {
-
-    header {
-        padding:15px 10px;
-    }
-
-    header img {
-        height:55px;
-    }
-
-    header h1 {
-        font-size:1.3rem;
-    }
-
-    .controls {
-        gap:6px;
-        padding:10px;
-    }
-
-    .controls button {
-        font-size:14px;
-        padding:6px 12px;
-    }
-
-    .viewer {
-        padding:5px;
-        min-height:60vh;
-    }
+/* === RESPONSIVE === */
+@media screen and (max-width:768px) {
+    header h1 {font-size:1.4rem;}
+    .controls {gap:8px; padding:10px;}
+    .controls button {padding:6px 12px;}
 }
 </style>
 </head>
 <body>
 
-<header>
-    <img src="Image/Xaviers.jpg">
-    <h1>Notice Board - St. Xavier's Campus</h1>
+<center>
+<header data-aos="fade-down">
+    <img src="Image/Xaviers.jpg" alt="Logo">
+    <h1 data-aos="fade-right">Notice Board - St. Xavier's Campus</h1>
 </header>
+</center>
 
 <div class="container">
-
-    <div class="controls">
+    <div class="controls" data-aos="fade-up">
         <button id="prevBtn">⟨ Prev</button>
         <button id="nextBtn">Next ⟩</button>
         <span>Page</span>
-        <input id="goto" type="number" min="1" value="1">
+        <input id="goto" type="number" min="1" style="width:60px;" value="1">
         <span id="pageCount">/ 0</span>
         <button id="zoomOut">-</button>
         <span id="zoomVal">210%</span>
         <button id="zoomIn">+</button>
     </div>
 
-    <div class="viewer" id="viewer"></div>
-
+    <div class="viewer" id="viewer" data-aos="zoom-in"></div>
 </div>
 
 <script>
-AOS.init({ duration:800, once:true });
+AOS.init({duration:800, once:true});
 
-// PDF.js Setup
-const PDF_URL = "1-Xav-Campus-Xmas Invitation - 2025.pdf";
+// PDF.js setup
+const PDF_URL = '1-Xav-Campus-Xmas Invitation - 2025.pdf'; 
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
+let pdfDoc = null, currentPage = 1, scale = 2.1; // Default 210%
+const MIN_SCALE = 2.1; // Prevent going smaller than 210%
+const viewer = document.getElementById('viewer');
+const pageCountEl = document.getElementById('pageCount');
+const gotoInput = document.getElementById('goto');
+const zoomVal = document.getElementById('zoomVal');
 
-let pdfDoc = null;
-let currentPage = 1;
-let scale = 2.1; // 210%
-const MIN_SCALE = 2.1;
-
-const viewer = document.getElementById("viewer");
-const pageCountEl = document.getElementById("pageCount");
-const gotoInput = document.getElementById("goto");
-const zoomVal = document.getElementById("zoomVal");
-
-// ⭐⭐⭐ HD TEXT FIX — HIGH RESOLUTION RENDER ⭐⭐⭐
 async function renderPage(pageNum) {
     const page = await pdfDoc.getPage(pageNum);
-
-    const dpr = window.devicePixelRatio || 1; // IMPORTANT — sharp text fix
-    const viewport = page.getViewport({ scale: scale });
-
-    const canvas = document.createElement("canvas");
-    canvas.className = "page-canvas";
-    const context = canvas.getContext("2d");
-
-    // High DPI Canvas
-    canvas.width = viewport.width * dpr;
-    canvas.height = viewport.height * dpr;
-    canvas.style.width = viewport.width + "px";
-    canvas.style.height = viewport.height + "px";
-
-    context.scale(dpr, dpr);
-
-    await page.render({
-        canvasContext: context,
-        viewport: viewport
-    }).promise;
-
-    viewer.innerHTML = "";
+    const viewport = page.getViewport({scale: scale});
+    const canvas = document.createElement('canvas');
+    canvas.className = 'page-canvas';
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+    const context = canvas.getContext('2d');
+    await page.render({canvasContext: context, viewport: viewport}).promise;
+    viewer.innerHTML = '';
     viewer.appendChild(canvas);
-
     pageCountEl.textContent = `/ ${pdfDoc.numPages}`;
     gotoInput.value = pageNum;
-    zoomVal.textContent = `${Math.round(scale * 100)}%`;
+    zoomVal.textContent = `${Math.round(scale*100)}%`;
 }
 
-document.getElementById("prevBtn").onclick = () => {
-    if (currentPage > 1) {
-        currentPage--;
-        renderPage(currentPage);
-    }
+document.getElementById('prevBtn').onclick = () => {
+    if(currentPage > 1){ currentPage--; renderPage(currentPage); }
 };
-
-document.getElementById("nextBtn").onclick = () => {
-    if (currentPage < pdfDoc.numPages) {
-        currentPage++;
-        renderPage(currentPage);
-    }
+document.getElementById('nextBtn').onclick = () => {
+    if(currentPage < pdfDoc.numPages){ currentPage++; renderPage(currentPage); }
 };
-
 gotoInput.onchange = () => {
     let val = parseInt(gotoInput.value);
-    if (val >= 1 && val <= pdfDoc.numPages) {
-        currentPage = val;
-        renderPage(currentPage);
-    }
+    if(val >=1 && val <= pdfDoc.numPages){ currentPage = val; renderPage(currentPage); }
+};
+document.getElementById('zoomIn').onclick = () => { scale += 0.1; renderPage(currentPage); };
+document.getElementById('zoomOut').onclick = () => { 
+    scale = Math.max(MIN_SCALE, scale-0.1); // Prevent going smaller than 210%
+    renderPage(currentPage); 
 };
 
-document.getElementById("zoomIn").onclick = () => {
-    scale += 0.1;
-    renderPage(currentPage);
-};
-
-document.getElementById("zoomOut").onclick = () => {
-    scale = Math.max(MIN_SCALE, scale - 0.1);
-    renderPage(currentPage);
-};
-
-async function loadPDF() {
+async function loadPDF(){
     pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
     renderPage(currentPage);
 }
-
 loadPDF();
 </script>
-
 </body>
 </html>
